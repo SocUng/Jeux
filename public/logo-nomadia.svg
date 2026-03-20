@@ -1,0 +1,11 @@
+<svg width="200" height="50" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
+  <!-- Hirondelle (Simplified) -->
+  <path d="M10 25 L25 10 L40 25 L25 40 Z" fill="#389F61" />
+  <path d="M15 25 L25 15 L35 25 L25 35 Z" fill="#132B40" />
+  
+  <!-- Nomadia Text -->
+  <text x="50" y="32" font-family="Arial, sans-serif" font-weight="bold" font-size="24" fill="#132B40">Nomadia</text>
+  
+  <!-- Baseline -->
+  <text x="50" y="45" font-family="Arial, sans-serif" font-size="8" fill="#389F61">Smart Mobility Solutions</text>
+</svg>

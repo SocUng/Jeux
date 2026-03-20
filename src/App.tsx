@@ -209,38 +209,53 @@ export default function App() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-black text-[#0f0] p-4 font-retro">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-nomadia-blue-bg-soft text-nomadia-blue p-4 font-sans">
+      <header className="w-full max-w-4xl flex justify-between items-center mb-8">
+        <img src="/logo-nomadia.svg" alt="Nomadia Logo" className="h-12" />
+        <div className="bg-nomadia-green-bg px-4 py-1 rounded-full text-nomadia-green text-xs font-bold uppercase tracking-wider">
+          Smart Mobility Duel
+        </div>
+      </header>
+
       <AnimatePresence mode="wait">
         {gameState === 'START' && (
           <motion.div 
             key="start"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1.1 }}
-            className="text-center space-y-8 border-4 border-[#0f0] p-12 bg-[#000080] shadow-[8px_8px_0px_#0f0]"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            className="text-center space-y-8 border border-nomadia-blue/5 p-12 bg-white rounded-2xl shadow-xl max-w-2xl w-full"
           >
-            <h1 className="text-4xl md:text-6xl text-yellow-400 drop-shadow-[4px_4px_0px_#f00]">
-              BARBARIAN
+            <h1 className="text-5xl md:text-7xl font-display text-nomadia-blue">
+              Barbarian <span className="text-nomadia-green italic">Nomadia</span>
             </h1>
             <div className="flex justify-center gap-4">
-              <Swords size={48} className="text-red-500" />
+              <Swords size={48} className="text-nomadia-green" />
             </div>
-            <p className="text-sm md:text-base leading-relaxed">
-              THE ULTIMATE DUEL<br/>
-              AMSTRAD CPC EDITION
+            <p className="text-lg leading-relaxed text-nomadia-blue/70">
+              Maîtrisez la mobilité, dominez le duel.<br/>
+              Une expérience rétro aux couleurs de l'innovation.
             </p>
-            <div className="space-y-4 text-xs md:text-sm text-cyan-400">
-              <p>CONTROLS:</p>
-              <p>A/D: MOVE | S: BLOCK</p>
-              <p>SPACE + UP: HIGH CHOP</p>
-              <p>SPACE + DOWN: LOW SLASH</p>
-              <p>SPACE: SPIN ATTACK</p>
+            
+            <div className="grid grid-cols-2 gap-4 text-left text-sm">
+              <div className="bg-nomadia-blue-bg p-4 rounded-xl">
+                <p className="font-bold text-nomadia-blue mb-2">DÉPLACEMENT</p>
+                <p className="text-nomadia-blue/60">A / D : Gauche / Droite</p>
+                <p className="text-nomadia-blue/60">S : Bloquer l'attaque</p>
+              </div>
+              <div className="bg-nomadia-green-bg p-4 rounded-xl">
+                <p className="font-bold text-nomadia-green mb-2">COMBAT</p>
+                <p className="text-nomadia-green/70">Espace + ↑ : Coup Haut</p>
+                <p className="text-nomadia-green/70">Espace + ↓ : Coup Bas</p>
+                <p className="text-nomadia-green/70">Espace : Attaque Tournoyante</p>
+              </div>
             </div>
+
             <button 
               onClick={startGame}
-              className="px-8 py-4 bg-red-600 text-white hover:bg-red-500 transition-colors border-4 border-white active:translate-y-1"
+              className="w-full py-4 bg-nomadia-green text-white font-bold rounded-xl hover:bg-nomadia-green-dark transition-all shadow-lg shadow-nomadia-green/20 active:scale-95"
             >
-              PRESS TO START
+              COMMENCER LE DUEL
             </button>
           </motion.div>
         )}
@@ -250,18 +265,18 @@ export default function App() {
             key="playing"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="relative border-8 border-gray-800 shadow-2xl"
+            className="relative border-4 border-nomadia-blue rounded-3xl overflow-hidden shadow-2xl bg-nomadia-blue"
           >
             <canvas 
               ref={canvasRef} 
               width={CANVAS_WIDTH} 
               height={CANVAS_HEIGHT}
-              className="w-full max-w-[960px] aspect-[1.6/1] bg-blue-900"
+              className="w-full max-w-[960px] aspect-[1.6/1]"
               style={{ width: 'min(90vw, 960px)' }}
             />
             <div className="absolute top-4 left-0 right-0 flex justify-between px-8 pointer-events-none">
-              <div className="text-white text-xs">P1: BARBARIAN</div>
-              <div className="text-white text-xs">P2: DRAX</div>
+              <div className="text-nomadia-green-light font-retro text-[10px]">P1: NOMADIA</div>
+              <div className="text-nomadia-orange-accent font-retro text-[10px]">P2: CONCURRENT</div>
             </div>
           </motion.div>
         )}
@@ -271,26 +286,38 @@ export default function App() {
             key="gameover"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center space-y-6 border-4 border-red-600 p-12 bg-black"
+            className="text-center space-y-6 border border-nomadia-blue/5 p-12 bg-white rounded-2xl shadow-xl"
           >
-            <Skull size={64} className="mx-auto text-red-600 animate-pulse" />
-            <h2 className="text-4xl text-red-600">GAME OVER</h2>
-            <p className="text-xl">
-              {winner === 1 ? "PLAYER 1 WINS!" : "CPU WINS!"}
+            {winner === 1 ? (
+              <Trophy size={64} className="mx-auto text-nomadia-green" />
+            ) : (
+              <Skull size={64} className="mx-auto text-nomadia-blue/30" />
+            )}
+            <h2 className="text-4xl font-display text-nomadia-blue">
+              {winner === 1 ? "Victoire Nomadia !" : "Échec de la Mission"}
+            </h2>
+            <p className="text-nomadia-blue/60">
+              {winner === 1 
+                ? "Vous avez optimisé votre trajectoire vers la victoire." 
+                : "L'adversaire a pris l'avantage sur le terrain."}
             </p>
             <button 
               onClick={startGame}
-              className="px-8 py-4 bg-[#0f0] text-black hover:bg-[#4f4] transition-colors"
+              className="px-12 py-4 bg-nomadia-blue text-white font-bold rounded-xl hover:bg-nomadia-blue-alt transition-all"
             >
-              REMATCH?
+              REPRENDRE LE DÉFI
             </button>
           </motion.div>
         )}
       </AnimatePresence>
 
-      <footer className="mt-8 text-[10px] opacity-50 text-center">
-        © 1987 PALACE SOFTWARE (REIMAGINED)<br/>
-        MODE 0 GRAPHICS EMULATION
+      <footer className="mt-12 text-xs text-nomadia-blue/40 flex flex-col items-center gap-2">
+        <div className="flex gap-4">
+          <span>© 2026 Nomadia Group</span>
+          <span>•</span>
+          <span>Smart Mobility Solutions</span>
+        </div>
+        <p className="italic">L'Hirondelle ne déforme jamais ses proportions.</p>
       </footer>
     </div>
   );

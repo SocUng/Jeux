@@ -5,12 +5,12 @@ const CANVAS_HEIGHT = 200; // Classic Amstrad resolution-ish
 const SCALE = 3;
 
 export function drawGame(ctx: CanvasRenderingContext2D, p1: Character, p2: Character) {
-  // Clear background
-  ctx.fillStyle = '#000080'; // Dark blue background
+  // Clear background - Nomadia Blue
+  ctx.fillStyle = '#132B40'; 
   ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
-  // Draw ground
-  ctx.fillStyle = '#008000'; // Green grass
+  // Draw ground - Nomadia Green
+  ctx.fillStyle = '#389F61'; 
   ctx.fillRect(0, 160, CANVAS_WIDTH, 40);
   
   // Draw UI
@@ -22,12 +22,12 @@ export function drawGame(ctx: CanvasRenderingContext2D, p1: Character, p2: Chara
 }
 
 function drawUI(ctx: CanvasRenderingContext2D, p1: Character, p2: Character) {
-  ctx.fillStyle = '#FFFF00';
+  ctx.fillStyle = '#76FF8A'; // Nomadia Green Light
   ctx.font = '8px "Press Start 2P"';
   
   // Player 1 Health
   for (let i = 0; i < 12; i++) {
-    ctx.fillStyle = i < p1.health ? '#FF0000' : '#440000';
+    ctx.fillStyle = i < p1.health ? '#76FF8A' : '#173249';
     ctx.beginPath();
     ctx.arc(20 + i * 10, 20, 3, 0, Math.PI * 2);
     ctx.fill();
@@ -35,7 +35,7 @@ function drawUI(ctx: CanvasRenderingContext2D, p1: Character, p2: Character) {
 
   // Player 2 Health
   for (let i = 0; i < 12; i++) {
-    ctx.fillStyle = i < p2.health ? '#FF0000' : '#440000';
+    ctx.fillStyle = i < p2.health ? '#FCBD7E' : '#173249'; // Enemy uses Orange Accent
     ctx.beginPath();
     ctx.arc(CANVAS_WIDTH - 20 - i * 10, 20, 3, 0, Math.PI * 2);
     ctx.fill();
