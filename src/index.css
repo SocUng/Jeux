@@ -1,40 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 @import "tailwindcss";
 
 @theme {
   --font-retro: "Press Start 2P", system-ui, sans-serif;
-  --font-display: "Playfair Display", Georgia, serif;
-  --font-sans: "Inter", system-ui, sans-serif;
-
-  --color-nomadia-green: #389F61;
-  --color-nomadia-green-bright: #00D947;
-  --color-nomadia-green-light: #76FF8A;
-  --color-nomadia-green-dark: #005C19;
-  --color-nomadia-green-bg: #ECF6F0;
-  --color-nomadia-green-bg-alt: #D7ECE0;
-  --color-nomadia-green-bg-soft: #F2FCF4;
-  
-  --color-nomadia-blue: #132B40;
-  --color-nomadia-blue-alt: #173249;
-  --color-nomadia-blue-mid: #005FB0;
-  --color-nomadia-blue-light: #0083EE;
-  --color-nomadia-blue-sky: #73A8FF;
-  --color-nomadia-blue-bg: #EBF1FF;
-  --color-nomadia-blue-bg-alt: #F2F5FC;
-  --color-nomadia-blue-bg-soft: #F3FBFD;
-  
-  --color-nomadia-purple: #B99BFF;
-  --color-nomadia-purple-bg: #F6F3FC;
-  
-  --color-nomadia-orange-bg: #FEF2E5;
-  --color-nomadia-orange-accent: #FCBD7E;
 }
 
 body {
-  background-color: var(--color-nomadia-blue-bg-soft);
-  color: var(--color-nomadia-blue);
-  font-family: var(--font-sans);
-  image-rendering: auto;
+  background-color: #000;
+  color: #0f0;
+  font-family: var(--font-retro);
+  image-rendering: pixelated;
   overflow: hidden;
 }
 
@@ -44,8 +19,4 @@ canvas {
 
 .font-retro {
   font-family: var(--font-retro);
-}
-
-.font-display {
-  font-family: var(--font-display);
 }

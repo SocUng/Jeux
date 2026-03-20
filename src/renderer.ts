@@ -5,12 +5,12 @@ const CANVAS_HEIGHT = 200; // Classic Amstrad resolution-ish
 const SCALE = 3;
 
 export function drawGame(ctx: CanvasRenderingContext2D, p1: Character, p2: Character) {
-  // Clear background - Nomadia Blue
-  ctx.fillStyle = '#132B40'; 
+  // Clear background
+  ctx.fillStyle = '#000080'; // Dark blue background
   ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
-  // Draw ground - Nomadia Green
-  ctx.fillStyle = '#389F61'; 
+  // Draw ground
+  ctx.fillStyle = '#008000'; // Green grass
   ctx.fillRect(0, 160, CANVAS_WIDTH, 40);
   
   // Draw UI
@@ -22,22 +22,39 @@ export function drawGame(ctx: CanvasRenderingContext2D, p1: Character, p2: Chara
 }
 
 function drawUI(ctx: CanvasRenderingContext2D, p1: Character, p2: Character) {
-  ctx.fillStyle = '#76FF8A'; // Nomadia Green Light
-  ctx.font = '8px "Press Start 2P"';
-  
-  // Player 1 Health
-  for (let i = 0; i < 12; i++) {
-    ctx.fillStyle = i < p1.health ? '#76FF8A' : '#173249';
+  // Player 1 Health (Red Buttons)
+  for (let i = 0; i < p1.health; i++) {
+    const x = 20 + i * 12;
+    const y = 20;
+    
+    // Main button body
+    ctx.fillStyle = '#FF0000';
     ctx.beginPath();
-    ctx.arc(20 + i * 10, 20, 3, 0, Math.PI * 2);
+    ctx.arc(x, y, 4, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Button highlight for 3D effect
+    ctx.fillStyle = '#FF7777';
+    ctx.beginPath();
+    ctx.arc(x - 1.5, y - 1.5, 1.5, 0, Math.PI * 2);
     ctx.fill();
   }
 
-  // Player 2 Health
-  for (let i = 0; i < 12; i++) {
-    ctx.fillStyle = i < p2.health ? '#FCBD7E' : '#173249'; // Enemy uses Orange Accent
+  // Player 2 Health (Red Buttons)
+  for (let i = 0; i < p2.health; i++) {
+    const x = CANVAS_WIDTH - 20 - i * 12;
+    const y = 20;
+    
+    // Main button body
+    ctx.fillStyle = '#FF0000';
     ctx.beginPath();
-    ctx.arc(CANVAS_WIDTH - 20 - i * 10, 20, 3, 0, Math.PI * 2);
+    ctx.arc(x, y, 4, 0, Math.PI * 2);
+    ctx.fill();
+    
+    // Button highlight for 3D effect
+    ctx.fillStyle = '#FF7777';
+    ctx.beginPath();
+    ctx.arc(x - 1.5, y - 1.5, 1.5, 0, Math.PI * 2);
     ctx.fill();
   }
 }
